@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dialog 요소와 popover 속성</title>
+    <link rel="shortcut icon" href="/favicon/likelion.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon/likelion.svg" type="image/svg+xml" />
+    <link rel="preload" as="font" href="/font/suit/SUIT-Variable.woff2" />
+    <link rel="stylesheet" href="/font/suit/SUIT-Variable.css" />
+    <link rel="stylesheet" href="/src/common/index.css" />
+    <style>
+      .panel-dialog::backdrop {
+        background-color: #ffc;
+      }
+    </style>
+  </head>
+  <body style="margin: 50px">
+    <div class="go-index"><a href="/index.html">Index로 이동</a></div>
+    <h1>dialog 요소와 popover 속성</h1>
+    <button type="button" class="show-dialog">혜택 보기</button>
+
+    <dialog class="panel-dialog">
+      <h2 id="surprise-benefits">깜짝 혜택</h2>
+      <p id="surprise-benefits-details">쉿! 고객님만을 위한 깜짝 할인 쿠폰 어제 빠뜨린 상품도 할인받고 내일 만나요!</p>
+      <a href="/">쿠폰 확인하기</a>
+      <button type="button" class="close-dialog">닫기</button>
+    </dialog>
+
+    <script>
+      // DOM 선택부
+      const showBtn = document.querySelector('.show-dialog');
+      const closeBtn = document.querySelector('.close-dialog');
+      const panelDialog = document.querySelector('.panel-dialog');
+
+      // --- 구현 1: open 속성으로 토글 (속성 기반) ---
+      function openByAttribute() {
+        panelDialog.setAttribute('open', '');
+      }
+      function closeByAttribute() {
+        panelDialog.removeAttribute('open');
+      }
+
+      // --- 구현 2: 표준 dialog API 사용 ---
+      function openByDialogAPI() {
+        if (typeof panelDialog.showModal === 'function') {
+          panelDialog.showModal();
+        } else if (typeof panelDialog.show === 'function') {
+          panelDialog.show();
+        } else {
+          // fallback for very old browsers
+          panelDialog.setAttribute('open', '');
+        }
+      }
+      function closeByDialogAPI() {
+        if (typeof panelDialog.close === 'function') {
+          panelDialog.close();
+        } else {
+          panelDialog.removeAttribute('open');
+        }
+      }
+
+      // 이벤트 바인딩: 원하는 구현을 선택하세요 (주석으로 전환)
+      // 1) 속성 기반 사용:
+      // showBtn.addEventListener('click', openByAttribute);
+      // closeBtn.addEventListener('click', closeByAttribute);
+
+      // 2) dialog API 사용 (기본 활성화)
+      showBtn.addEventListener('click', openByDialogAPI);
+      closeBtn.addEventListener('click', closeByDialogAPI);
+    </script>
+  </body>
+</html>
