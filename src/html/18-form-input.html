@@ -30,21 +30,56 @@
     <hr />
     <!-- fieldset과 legend 요소로 연관성 있는 폼 서식을 그룹화 시킬 경우 -->
     <form action="">
-      <div>
-        <label for="name">이름</label>
-        <input type="text" id="name" />
-      </div>
-      <div>
-        <label for="password">암호</label>
-        <input type="password" id="password" />
-      </div>
-      <!-- 암묵적인 레이블링 -->
+<fieldset>
+<legend>고객 정보</legend>
+<!-- 명시적인 레이블링 -->
+<div>
+<label for="userName">성명</label>
+<input type="text" name="userName" id="userName" required />
+</div>
+<input type="text" name="userEmail" id="userEmail" required placeholder="guest@linklion.net" pattern="[A-Za-z0-9!#$%&'*+/=?^_`{|}~@.\-]+" />
+<!-- 암묵적인 레이블링 -->
 <div>
 <label>
 암호
-<input type="password" />
+<input type="password" name="userPwd" required placeholder="6자리 이하" maxlength="6" />
 </label>
 </div>
-    </form>
+<input type="reset" value="초기화" />
+<input type="submit" value="전송" />
+</fieldset>
+<!-- 다양한 입력 서식 -->
+ <!-- 체크 박스 -->
+<div>
+<input type="checkbox" name="frontend" id="html" value="html" />
+<label for="html">HTML</label>
+</div>
+<div>
+<input type="checkbox" name="frontend" id="css" value="css" />
+<label for="css">CSS</label>
+</div>
+<div>
+<input type="checkbox" name="frontend" id="js" value="js" />
+<label for="js">Javscript</label>
+</div>
+<!-- 라디오 버튼 -->
+<fieldset>
+<legend>성별</legend>
+<div>
+<input checked type="radio" name="gender" id="male" />
+<label for="">남성</label>
+</div>
+<div>
+<input type="radio" name="gender" id="female" />
+<label for="">여성</label>
+</div>
+</fieldset>
+<!-- 색상 선택 -->
+<div>
+<label for="forground">글자색</label>
+<input type="color" name="forground" id="forground" />
+</div>
+
+</form>
   </body>
 </html>
