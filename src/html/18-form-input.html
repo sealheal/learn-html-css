@@ -13,16 +13,19 @@
   <body style="margin: 50px">
     <div class="go-index"><a href="/index.html">Index로 이동</a></div>
     <h1>폼 (input) 요소</h1>
-    <!-- form 요소 안에 submit 버튼이 있는 경우 -->
-    <form action="/" method="post" id="likelion">
-      <input type="email" name="" id="" />
-      <button type="submit" form="bootcamp">전송</button>
-    </form>
-    <!-- form 요소 밖에 submit 버튼이 있는 경우 (id, form 속성으로 연결) -->
-    <!-- HTML5에 새롭게 추가된 사용 방식 -->
-    <form action="/" method="post" id="bootcamp">
-      <input type="email" name="" id="" />
-      <button type="submit" form="bootcamp">전송</button>
+<!-- form 요소 안에 submit 버튼이 있는 경우 -->
+<!-- type 속성의 값을 email로 지정하면 입력 값은 이메일 형식을 유지해야 함. -->
+<form action="/" method="post" id="likelion">
+<input type="email" name="userEmail" id="userEmail" />
+<button type="submit">전송</button>
+</form>
+
+<!-- form 요소 밖에 submit 버튼이 있는 경우 (id, form 속성으로 연결) -->
+<!-- HTML5에 새롭게 추가된 사용 방식 -->
+<!-- type 속성의 값을 url로 지정하면 입력 값은 이메일 형식을 유지해야 함. -->
+<form action="/" method="post" id="bootcamp"></form>
+<input type="url" form="bootcamp" name="yourEmail" id="yourEmail" />
+<button type="submit" form="bootcamp">전송</button>
     </form>
     <hr />
     <!-- fieldset과 legend 요소로 연관성 있는 폼 서식을 그룹화 시킬 경우 -->
@@ -35,6 +38,13 @@
         <label for="password">암호</label>
         <input type="password" id="password" />
       </div>
+      <!-- 암묵적인 레이블링 -->
+<div>
+<label>
+암호
+<input type="password" />
+</label>
+</div>
     </form>
   </body>
 </html>
